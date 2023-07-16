@@ -35,7 +35,6 @@ const Content = () => {
     };
     getData();
   }, [walletReady]);
-  console.log(data)
 
   const changeMessage = async (e: any) => {
     if (!wallet) {
