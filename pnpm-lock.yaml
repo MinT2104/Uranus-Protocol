@@ -68,6 +68,9 @@ dependencies:
   bufferutil:
     specifier: ^4.0.7
     version: 4.0.7
+  date-fns:
+    specifier: ^2.30.0
+    version: 2.30.0
   ethers:
     specifier: ^5.7.2
     version: 5.7.2(bufferutil@4.0.7)(utf-8-validate@6.0.3)
@@ -4473,6 +4476,13 @@ packages:
 
   /csstype@3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+    dev: false
+
+  /date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.21.0
     dev: false
 
   /dateformat@4.6.3:

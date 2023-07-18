@@ -2,33 +2,23 @@
 
 import { useAppSelector } from "@/context/store";
 import { selectWallet } from "@/features/walletSlice";
+import { CoursesPerInstructor, defaultCoursesPerInstructorState, defaultUserState, UserInterface } from "@/types";
 import { useEffect, useState } from "react";
+import UserInfo from "./UserInfo";
 
-interface IProfileDetailProps {}
 
-interface CoursesPerInstructor {
-  content: string | null,
-  course_id: string | null,
-  created_at: number,
-  instructor_id: string,
-  media: string | null,
-  price: number,
-  rating: number,
-  rating_count: number,
-  students_completed: {},
-  students_studying_map: {},
-  title: string | null,
-}
-
-const ProfileDetail = (props: IProfileDetailProps) => {
-  const [data, setData] = useState<[CoursesPerInstructor]>()
+const ProfileDetail = () => {
+  const [data, setData] = useState<[CoursesPerInstructor]>(defaultCoursesPerInstructorState)
   const [isDataFetched, setDataFetched] = useState<boolean>(false)
+
+  const [user, setUser] = useState<UserInterface>(defaultUserState)
+  const [isUserFetched, setUserFetched] = useState<boolean>(false)
   const wallet = useAppSelector(selectWallet);
+  const urlSplit = window?.location.href.split("/");
 
   useEffect(() => {
     const getData = async () => {
-      const urlSplit = window?.location.href.split("/");
-      if (urlSplit[3] === "profile" && urlSplit[4] !== undefined && wallet) {
+      if (urlSplit[3] === "profile" && urlSplit[4] !== undefined && wallet && user?.metadata.role === "Instructor") {
         const result = await wallet.viewMethod({
           contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
           method: "get_all_courses_per_instructor",
@@ -45,8 +35,30 @@ const ProfileDetail = (props: IProfileDetailProps) => {
     getData()
   }, [wallet, isDataFetched])
 
+  useEffect(() => {
+    const getData = async () => {
+      if (urlSplit[3] === "profile" && urlSplit[4] !== undefined && wallet) {
+        const result = await wallet.viewMethod({
+          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+          method: "get_user_metadata_by_user_id",
+          args: {
+            user_id: urlSplit[4],
+          }
+        });
+        setUser(result)
+        setUserFetched(true);
+      }
+    }
+    getData()
+  }, [wallet, isUserFetched])
+  console.log(user)
+  console.log(data)
+
   return (
-    <section>
+    <section  className="max-w-[1440px] mx-auto lg:w-3/4 px-2 pt-4 text-gray-900">
+      {/* User Infomation */}
+      <UserInfo userdata={user}/>
+      {/* User Infomation */}
       {data?.map((course) => (
         <div key={course.course_id}>
           <h1>{course.course_id}</h1>

@@ -86,9 +86,17 @@ function ConnectWalletButton() {
   const isWalletConnected = !!wallet?.accountId;
 
   return isWalletConnected ? (
-    <Link href={`/profile/${account}`} className="rounded-full border-4 border-black" >
-      <Image src={data?.metadata.avatar || "/images/logo.jpg"} alt="avatar" height={40} width={40}  className="rounded-full"/>
-    </Link>
+    <>
+      <a href={`/profile/${account}`} className="rounded-full border-4 border-black" >
+        <Image src={data?.metadata.avatar || "/images/logo.jpg"} alt="avatar" height={40} width={40}  className="rounded-full"/>
+      </a>
+      <button
+        onClick={signOutClick}
+        className="border border-gray-600 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-300 hover:border-b-4 hover:border-r-4 transition-all duration-100 font-medium ease-in-out"
+      >
+        Sign Out
+      </button>
+    </>
   ) : (
     <button
       onClick={onConnectWalletClicked}
