@@ -9,7 +9,7 @@ export interface UserInterface {
     first_name?: string | null;
     last_name?: string | null;
     bio?: string | null;
-    avatar?: string | null;
+    avatar: string | null;
     resume: string;
     created_at: number | null;
     updated_at: number | null;
@@ -23,6 +23,7 @@ export interface UserInterface {
 export interface CoursesPerInstructor {
   content: string | null,
   course_id: string | null,
+  description: string | null,
   created_at: number,
   instructor_id: string,
   media: string | null,
@@ -45,11 +46,11 @@ export const defaultUserState = (): UserInterface => ({
     first_name: null,
     last_name: null,
     bio: null,
-    avatar: "/images/logo.jpg",
+    avatar: null,
     resume: '',
     created_at: null,
     updated_at: null,
-    courses_owned: null
+    courses_owned: null,
   },
   skill: {},
   certificate: [],
@@ -60,8 +61,9 @@ export const defaultCoursesPerInstructorState = (): [CoursesPerInstructor] => ([
   content: null,
   course_id: null,
   created_at: 0,
+  description: null,
   instructor_id: '',
-  media: "/images/logo.jpg",
+  media: null,
   price: 0,
   rating: 0,
   rating_count: 0,

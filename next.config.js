@@ -8,6 +8,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'i.ibb.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.usnews.com'
+      },
+      {
+        protocol: "https",
+        hostname: "d1xn1bcogdo8ve.cloudfront.net"
+      },
+      {
+        protocol: "https",
+        hostname: "research-assets.cbinsights.com"
       }
     ]
   },
