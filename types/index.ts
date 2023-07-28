@@ -71,3 +71,4 @@ export const defaultCoursesPerInstructorState = (): [CoursesPerInstructor] => ([
   students_studying_map: {},
   title: null
 }]);
+

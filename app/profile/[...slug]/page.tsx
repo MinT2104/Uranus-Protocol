@@ -10,6 +10,7 @@ import Courses from "./Courses";
 
 const ProfileDetail = () => {
   const [courses, setCourses] = useState<CoursesPerInstructor[]>(defaultCoursesPerInstructorState);
+  const [coursesSub, setCoursesSub] = useState<CoursesPerInstructor[]>(defaultCoursesPerInstructorState);
   const [user, setUser] = useState<UserInterface>(defaultUserState);
   const [isReady, setIsReady] = useState(false);
   const wallet = useAppSelector(selectWallet);
@@ -51,7 +52,15 @@ const ProfileDetail = () => {
               user_id: urlSplit[2],
             }
           });
+          const resultcourse = await wallet.viewMethod({
+            contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+            method: "get_purchase_course_by_user_id",
+            args: {
+              user_id: urlSplit[2],
+            }
+          });
           setUser(result);
+          setCoursesSub(resultcourse);
         } catch (error) {
           console.error("Error fetching user:", error);
         }
@@ -65,8 +74,19 @@ const ProfileDetail = () => {
     <section className="max-w-[1440px] mx-auto lg:w-3/4 px-2 pt-4 text-gray-900">
       {/* User Information */}
       <UserInfo userdata={user} />
-      {courses.map((course) => (
-        <Courses course={course} key={course.course_id} />
+      {user.metadata.role === "Instructor" && <h1>Các khoá đã Publish</h1>}
+      {user.metadata.role === "Instructor" &&
+       courses.map((course) => (
+         <Courses course={course} key={course.course_id}/>
+       ))
+      }
+      <div>
+        {coursesSub.length !== 0 &&
+        <h1 className="font-bold">Course Đang học</h1>
+        }
+      </div>
+      {coursesSub.map((course) => (
+        <Courses course={course} key={course.course_id}/>
       ))}
       {/* Courses */}
     </section>

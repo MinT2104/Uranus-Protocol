@@ -19,7 +19,7 @@ const Header = (props: IHeaderProps) => {
             className="rounded-full"
           />
           <h2 className="font-extrabold hidden lg:flex text-xl leading-[24px] text-primary items-center">
-            EAMONDANG
+            VBI ACADEMY
             <span className="text-secondary font-bold text-3xl items-center">
               .
             </span>

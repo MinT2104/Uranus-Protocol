@@ -2,3 +2,5 @@
 /.env
 /.vscode/
 /.next/
+/.DS_Store
+/public/.DS_Store

@@ -37,7 +37,6 @@ const UserInfo = (props: IUserInfoInterface) => {
     setShowResume((prevState) => !prevState); // Toggle the visibility state of the pop-up
   };
 
-
   return (
     <div className="border border-gray-400 rounded-md grid grid-cols-8 px-2 py-4">
       <div className="col-span-2 text-center flex flex-col justify-start items-center">
@@ -72,33 +71,34 @@ const UserInfo = (props: IUserInfoInterface) => {
         <p>
           <span className="font-bold">Updated at</span>:{" "}
     {updated_at ? new Date(updated_at).toLocaleString() : "N/A"}
-        </p>
+    </p>
 
-        {/* Button to show the Image Resume */}
-        <button onClick={toggleResume} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-          Show Resume
-        </button>
+    {/* Button to show the Image Resume */}
+    {resume && (
+      <button onClick={toggleResume} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Show Resume
+      </button>
+    )}
 
-        {/* Pop-up with the Image component */}
-        {showResume && (
-          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="relative">
-              <button
-                onClick={toggleResume}
-                className="absolute top-4 right-4 text-gray-500 font-bold cursor-pointer"
-              >
-                X
-              </button>
-              <Image
-                src={resume ? resume : ""}
-                alt="resume"
-                width={600}
-                height={1000}
-                className="max-h-3/5 object-cover"
-              />
-            </div>
-          </div>
-        )}
+    {/* Pop-up with the Image component */}
+    {showResume && resume && (
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="relative">
+          <button
+            onClick={toggleResume}
+            className="absolute top-4 right-4 text-gray-500 font-bold cursor-pointer"
+          >
+            X
+          </button>
+          <Image
+            src={resume ? resume : ""}
+            alt="resume"
+            width={600}
+            height={1000}
+            className="max-h-3/5 object-cover"
+          />
+        </div>
+      </div>)}
       </div>
     </div>
   );
