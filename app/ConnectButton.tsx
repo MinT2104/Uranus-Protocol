@@ -1,10 +1,14 @@
 "use client";
 
-import { memo, useEffect, useState } from "react";
-import { useAppSelector } from "@/context/store";
+import { memo, useEffect, useRef, useState } from "react";
+import { RootState, useAppSelector } from "@/context/store";
 import { selectAccountId, selectWallet } from "@/features/walletSlice";
 import Link from "next/link";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import PersonIcon from "@mui/icons-material/Person";
+import { useClickOutside } from "@/hooks/useClickOutside";
+import { userLogin } from "@/services/userServices";
 
 interface UserMetadata {
   user_id: string;
@@ -30,7 +34,6 @@ interface User {
   courses: any[]; // You can replace 'any' with a more specific type if needed
 }
 
-
 function ConnectWalletButton() {
   const wallet = useAppSelector(selectWallet);
   const account = useAppSelector(selectAccountId);
@@ -42,7 +45,7 @@ function ConnectWalletButton() {
         status: "error",
       };
 
-    if (wallet.accountId) {
+    if (wallet?.accountId) {
       return {
         title: "Wallet already connected",
         status: "info",
@@ -63,44 +66,70 @@ function ConnectWalletButton() {
     wallet.signOut();
   };
 
-  const [data, setData] = useState<User>()
-  const [isDataFetched, setDataFetched] = useState<boolean>(false)
+  const [data, setData] = useState<User>();
+  const [isDataFetched, setDataFetched] = useState<boolean>(false);
 
   useEffect(() => {
-    const getData = async () => {
-      if (wallet) {
-        const result = await wallet.viewMethod({
-          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
-          method: "get_user_metadata_by_user_id",
-          args: {
-            user_id: account,
-          }
-        });
-        setData(result)
-        setDataFetched(true);
-      }
+    const accountName = JSON.parse(
+      localStorage.getItem("near_app_wallet_auth_key")
+    )?.accountId;
+    // const getData = async () => {
+    //   if (wallet) {
+    //     const result = await wallet.viewMethod({
+    //       contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+    //       method: "get_user_metadata_by_user_id",
+    //       args: {
+    //         user_id: account,
+    //       },
+    //     });
+    //     setData(result);
+    //     setDataFetched(true);
+    //   }
+    // };
+    // getData();
+    if (account !== accountName) {
+      // getLoginService({})
+      console.log("muted");
     }
-    getData()
-  }, [wallet, isDataFetched])
+  }, [wallet, isDataFetched]);
 
   const isWalletConnected = !!wallet?.accountId;
-
+  const userWallet = useSelector((state: RootState) => state.wallet.wallet);
+  const [isPopupLogout, setIsPopupLogout] = useState(false);
+  const dropDownRef = useRef(null);
+  useClickOutside(dropDownRef, setIsPopupLogout);
   return isWalletConnected ? (
     <>
-      <a href={`/profile/${account}`} className="rounded-full border-4 border-black" >
-        <Image src={data?.metadata.avatar || "/images/logo.jpg"} alt="avatar" height={40} width={40}  className="rounded-full"/>
-      </a>
-      <button
-        onClick={signOutClick}
-        className="border border-gray-600 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-300 hover:border-b-4 hover:border-r-4 transition-all duration-100 font-medium ease-in-out"
+      {/* <button
+        className="border border-gray-600 px-4 py-2 rounded-md text-gray-600  font-medium ease-in-out"
       >
         Sign Out
+      </button> */}
+      <button
+        ref={dropDownRef}
+        onClick={() => setIsPopupLogout(!isPopupLogout)}
+        type="button"
+        className="relative w-fit bg-white flex items-center gap-2  hover:border-slate-300 border-[1px] border-white text-black p-[16px] py-[5px] rounded-[20px] font-[600] outline-none"
+      >
+        <div className="w-6 h-6 text-slate-500">
+          <PersonIcon sx={{ fontSize: 20 }} />
+        </div>
+        <span className="w-fit text-slate-500">{userWallet?.accountId}</span>
+        {isPopupLogout && (
+          <div
+            onClick={signOutClick}
+            className="absolute top-10 left-0 rounded hover:text-pink-600 w-full h-fit bg-white lightShadow py-2"
+          >
+            <span>Log out</span>
+          </div>
+        )}
       </button>
     </>
   ) : (
     <button
       onClick={onConnectWalletClicked}
-      className="border border-gray-600 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-300 hover:border-b-4 hover:border-r-4 transition-all duration-100 font-medium ease-in-out"
+      type="button"
+      className="bg-[#FFD4EB] text-[#30A1EB] p-[10px] rounded-[20px] font-[600] outline-none"
     >
       Connect
     </button>
