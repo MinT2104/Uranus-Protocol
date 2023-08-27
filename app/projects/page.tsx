@@ -99,7 +99,7 @@ const page = () => {
                 </button>
               </div>
             </div>
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
+            {/* <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
             <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
             <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
             <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col">
@@ -125,8 +125,8 @@ const page = () => {
                   View details
                 </button>
               </div>
-            </div>
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
+            </div> */}
+            {/* <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div> */}
             {/* <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>
                 <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>
                 <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>

@@ -10,9 +10,9 @@ import axiosClient from "@/services/axiosInstance";
 export default function Home() {
   const wallet = useSelector((state: RootState) => state.wallet);
   console.log(wallet.wallet?.accountId);
-  useEffect(() => {
-    axiosClient.get("/pump").then((res) => console.log(res));
-  }, []);
+  // useEffect(() => {
+  //   axiosClient.get("/pump").then((res) => console.log(res));
+  // }, []);
   return (
     <section className="w-full h-fit bg-primary">
       <div className="h-screen w-[500px] mx-auto flex flex-col items-center justify-center gap-4">

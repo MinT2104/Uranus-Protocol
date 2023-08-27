@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useAppSelector } from "@/context/store";
 import { selectAccountId, selectWallet } from "@/features/walletSlice";
+import { utils } from "near-api-js";
 
 // interface IHeaderProps {}
 const Page: any = [
@@ -20,10 +21,10 @@ const Page: any = [
     to: "/jobs",
     name: "Jobs",
   },
-  {
-    to: "/working",
-    name: "Working",
-  },
+  // {
+  //   to: "/working",
+  //   name: "Working",
+  // },
   {
     to: "/projects",
     name: "Projects",
@@ -34,8 +35,10 @@ const Header = () => {
   const wallet = useAppSelector(selectWallet);
   const account = useAppSelector(selectAccountId);
   const [path, setPath] = useState("");
+
   useEffect(() => {
     const getData = async () => {
+      const deposit = utils.format.parseNearAmount("10");
       if (wallet) {
         const result = await wallet.callMethod({
           contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
@@ -43,14 +46,34 @@ const Header = () => {
           args: {
             name_job: "PHP dev",
             description: "mô tả",
+            deadline: "10",
           },
+          gas: "50000000000",
+          deposit: deposit || "10",
         });
         console.log(result);
       }
     };
     getData();
     console.log("alo");
-  }, []);
+  }, [wallet]);
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     if (wallet) {
+  //       const result = await wallet.viewMethod({
+  //         contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+  //         method: "take_job",
+  //         args: {
+  //           job_id: 11,
+  //         },
+  //       });
+  //       console.log(result);
+  //     }
+  //   };
+  //   getData();
+  //   console.log("alo");
+  // }, [wallet]);
 
   // useEffect(() => {
   //   setPath(window.location.pathname);

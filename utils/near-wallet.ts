@@ -22,7 +22,7 @@ import { setupSender } from "@near-wallet-selector/sender";
 import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
 import { setupHereWallet } from "@near-wallet-selector/here-wallet";
 
-const THIRTY_TGAS = "50_0...";
+const THIRTY_TGAS = "30000000000";
 const NO_DEPOSIT = "10";
 
 type WalletProps = {
@@ -132,7 +132,7 @@ export class Wallet {
     }
     const { network } = this.walletSelector.options;
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
-
+    // console.log(this.accountId);
     const res = await provider.query({
       request_type: "call_function",
       account_id: contractId,
