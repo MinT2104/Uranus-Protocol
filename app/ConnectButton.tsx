@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import PersonIcon from "@mui/icons-material/Person";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { userLogin } from "@/services/userServices";
+// import { userLogin } from "@/services/userServices";
 
 interface UserMetadata {
   user_id: string;
@@ -69,29 +69,29 @@ function ConnectWalletButton() {
   const [data, setData] = useState<User>();
   const [isDataFetched, setDataFetched] = useState<boolean>(false);
 
-  useEffect(() => {
-    const accountName = JSON.parse(
-      localStorage.getItem("near_app_wallet_auth_key")
-    )?.accountId;
-    // const getData = async () => {
-    //   if (wallet) {
-    //     const result = await wallet.viewMethod({
-    //       contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
-    //       method: "get_user_metadata_by_user_id",
-    //       args: {
-    //         user_id: account,
-    //       },
-    //     });
-    //     setData(result);
-    //     setDataFetched(true);
-    //   }
-    // };
-    // getData();
-    if (account !== accountName) {
-      // getLoginService({})
-      console.log("muted");
-    }
-  }, [wallet, isDataFetched]);
+  // useEffect(() => {
+  //   const accountName = JSON.parse(
+  //     localStorage.getItem("near_app_wallet_auth_key")
+  //   )?.accountId;
+  //   // const getData = async () => {
+  //   //   if (wallet) {
+  //   //     const result = await wallet.viewMethod({
+  //   //       contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+  //   //       method: "get_user_metadata_by_user_id",
+  //   //       args: {
+  //   //         user_id: account,
+  //   //       },
+  //   //     });
+  //   //     setData(result);
+  //   //     setDataFetched(true);
+  //   //   }
+  //   // };
+  //   // getData();
+  //   if (account !== accountName) {
+  //     // getLoginService({})
+  //     console.log("muted");
+  //   }
+  // }, [wallet, isDataFetched]);
 
   const isWalletConnected = !!wallet?.accountId;
   const userWallet = useSelector((state: RootState) => state.wallet.wallet);
