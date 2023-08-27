@@ -15,15 +15,15 @@ import type {
   Wallet as WalletSelectorWallet,
 } from "@near-wallet-selector/core";
 import { setupWalletSelector } from "@near-wallet-selector/core";
-import {setupNearWallet} from "@near-wallet-selector/near-wallet";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
 import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
-import {setupMeteorWallet} from '@near-wallet-selector/meteor-wallet'
-import {setupSender} from '@near-wallet-selector/sender'
-import {setupCoin98Wallet} from '@near-wallet-selector/coin98-wallet'
-import {setupHereWallet} from '@near-wallet-selector/here-wallet'
+import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
+import { setupSender } from "@near-wallet-selector/sender";
+import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
+import { setupHereWallet } from "@near-wallet-selector/here-wallet";
 
-const THIRTY_TGAS = "30000000000000";
-const NO_DEPOSIT = "0";
+const THIRTY_TGAS = "50_0...";
+const NO_DEPOSIT = "10";
 
 type WalletProps = {
   createAccessKeyFor?: string;
@@ -67,7 +67,7 @@ export class Wallet {
     const isSignedIn = this.walletSelector.isSignedIn();
 
     // If user is signed in, update fields, otherwise do nothing
-  if (isSignedIn) {
+    if (isSignedIn) {
       const accountState = this.walletSelector.store.getState().accounts[0];
 
       if (!accountState) {
@@ -140,7 +140,7 @@ export class Wallet {
       args_base64: Buffer.from(JSON.stringify(args)).toString("base64"),
       finality: "optimistic",
     });
-
+    console.log(res);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return JSON.parse(Buffer.from(res.result).toString());
