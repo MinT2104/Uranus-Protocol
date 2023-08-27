@@ -10,10 +10,16 @@ import SortOutlinedIcon from "@mui/icons-material/SortOutlined";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CategoryCreation } from "@/components/CategoryCreation";
+import { ProjectData } from "@/constants/ProjectData";
+import Link from "next/link";
+import { stringify } from "querystring";
 const page = () => {
   const [isPosition, setIsPosition] = useState(false);
   const [isCategoryCreation, setIsCategoryCreation] = useState(false);
   const router = useRouter();
+  // const data: any = localStorage.getItem("projectData");
+  // console.log(JSON.parse(data));
+
   return (
     <section className=" h-screen bg-primary relative overflow-auto scrollbar pb-10">
       {isCategoryCreation && (
@@ -71,66 +77,86 @@ const page = () => {
               </button>
             </div>
           </div>
-          <section className="flex gap-1 w-full flex-wrap pb-10">
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col">
-              <div className="w-full h-full p-4 flex flex-col gap-2 text-black">
-                <div className="w-full flex flex-col ">
-                  <span className="block w-full font-[600] text-[24px]">
-                    Looking for Website Developer and UX/UI
-                  </span>
-                  <span className="font-light text-[12px] text-noSelected">
-                    16/08/2023
-                  </span>
-                </div>
-                <span className="font-[600] text-[24px]">$0.00</span>
-                <span className="inline-block w-full text-sm text-noSelected">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore
-                </span>
-              </div>
-              <div className="w-full flex justify-center items-center p-4">
-                <button
-                  onClick={() => router.push("/projects/detail/123456789")}
-                  className="px-10 p-2 text-center rounded-full bg-pink-500 text-white"
-                >
-                  View details
-                </button>
-              </div>
-            </div>
-            {/* <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div>
-            <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col">
-              <div className="w-full h-full p-4 flex flex-col gap-2">
-                <div className="w-full flex flex-col ">
-                  <span className="block w-full font-[600] text-[24px]">
-                    Looking for Website Developer and UX/UI
-                  </span>
-                  <span className="font-light text-[12px] text-noSelected">
-                    16/08/2023
-                  </span>
-                </div>
-                <span className="font-[600] text-[24px]">$0.00</span>
-                <span className="inline-block w-full text-sm text-noSelected">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore
-                </span>
-              </div>
-              <div className="w-full flex justify-center items-center p-4">
-                <button className="px-10 p-2 text-center rounded-full bg-pink-500 text-white">
-                  View details
-                </button>
-              </div>
-            </div> */}
-            {/* <div className="w-[33%] border-[1px] rounded-[12px] min-h-fit bg-white flex gap-1 flex-col"></div> */}
-            {/* <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>
-                <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>
-                <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div>
-                <div className="w-1/3 border-[1px] rounded-[12px] h-80 bg-white"></div> */}
+          <section className="flex gap-1 w-full flex-wrap pb-10 bg-white rounded border overflow-auto scrollbar2">
+            <table className="styled-table animate-opacity min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="animate-opacity">
+                <tr className="text-slate-600 font-light text-left">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    #
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Money
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Description
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Location
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Category
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Github link
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    Twitter link
+                  </th>
+                </tr>
+              </thead>
+              {/* <hr /> */}
+              <tbody className="animate-opacity">
+                {ProjectData?.map((data: any, index: any) => (
+                  <tr key={index} className="text-black">
+                    <td className="text-left px-6 py-3 truncate">
+                      {index + 1}
+                    </td>
+                    <td
+                      onClick={() => {
+                        localStorage.setItem("projectData", index);
+                      }}
+                      className="text-left px-6 py-3 truncate cursor-pointer hover:underline"
+                    >
+                      <Link href={`/projects/detail/${data.id}`}>
+                        {data.name}
+                      </Link>
+                    </td>
+                    <td className="text-left px-6 py-3 truncate ">
+                      {data.money}
+                    </td>
+                    <td className="text-left px-6 py-3 truncate ">
+                      <button
+                        onClick={() =>
+                          localStorage.setItem("projectData", index)
+                        }
+                        className="px-4 py-2 bg-pink-500 text-white rounded"
+                      >
+                        Read more
+                      </button>
+                    </td>
+                    <td className="text-left px-6 py-3 truncate">
+                      {data.location}
+                    </td>
+                    <td className="text-left px-6 py-3 truncate">
+                      {data.category}
+                    </td>
+                    <td className="text-left px-6 py-3 truncate">
+                      <a href={data.github} className="text-blue-500">
+                        {data.github}
+                      </a>
+                    </td>
+                    <td className="text-left px-6 py-3 truncate">
+                      <a href={data.github} className="text-blue-500">
+                        {data.github}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </section>
         </div>
       ) : (

@@ -1,7 +1,7 @@
 /* A helper file that simplifies using the wallet selector */
 
 // near api js
-import { providers } from "near-api-js";
+import { providers, utils } from "near-api-js";
 
 // wallet selector UI
 import "@near-wallet-selector/modal-ui/styles.css";
@@ -21,9 +21,8 @@ import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
 import { setupSender } from "@near-wallet-selector/sender";
 import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
 import { setupHereWallet } from "@near-wallet-selector/here-wallet";
-
-const THIRTY_TGAS = "30000000000";
-const NO_DEPOSIT = "10";
+const THIRTY_TGAS = "30000000000000";
+const NO_DEPOSIT = "0";
 
 type WalletProps = {
   createAccessKeyFor?: string;

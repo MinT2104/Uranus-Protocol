@@ -36,43 +36,42 @@ const Header = () => {
   const account = useAppSelector(selectAccountId);
   const [path, setPath] = useState("");
 
-  useEffect(() => {
-    const getData = async () => {
-      const deposit = utils.format.parseNearAmount("10");
-      if (wallet) {
-        const result = await wallet.callMethod({
-          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
-          method: "create_job",
-          args: {
-            name_job: "PHP dev",
-            description: "mô tả",
-            deadline: "10",
-          },
-          gas: "50000000000",
-          deposit: deposit || "10",
-        });
-        console.log(result);
-      }
-    };
-    getData();
-    console.log("alo");
-  }, [wallet]);
-
   // useEffect(() => {
   //   const getData = async () => {
+  //     const deposit = utils.format.parseNearAmount("5");
   //     if (wallet) {
-  //       const result = await wallet.viewMethod({
+  //       const result = await wallet.callMethod({
   //         contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
-  //         method: "take_job",
+  //         method: "create_job",
   //         args: {
-  //           job_id: 11,
+  //           name_job: "PHP dev",
+  //           description: "mô tả",
+  //           deadline: "10",
   //         },
+  //         gas: "50000000000000",
+  //         deposit: deposit || "10",
   //       });
   //       console.log(result);
   //     }
   //   };
   //   getData();
   //   console.log("alo");
+  // }, [wallet]);
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     if (wallet) {
+  //       const result = await wallet.viewMethod({
+  //         contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+  //         method: "get_job_info",
+  //         args: {
+  //           job_id: 12,
+  //         },
+  //       });
+  //       console.log(result);
+  //     }
+  //   };
+  //   getData();
   // }, [wallet]);
 
   // useEffect(() => {
