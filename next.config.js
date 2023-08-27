@@ -6,26 +6,26 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: "img.freepik.com"
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.ibb.co',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.usnews.com'
+        protocol: "https",
+        hostname: "img.freepik.com",
       },
       {
         protocol: "https",
-        hostname: "d1xn1bcogdo8ve.cloudfront.net"
+        hostname: "i.ibb.co",
       },
       {
         protocol: "https",
-        hostname: "research-assets.cbinsights.com"
-      }
-    ]
+        hostname: "www.usnews.com",
+      },
+      {
+        protocol: "https",
+        hostname: "d1xn1bcogdo8ve.cloudfront.net",
+      },
+      {
+        protocol: "https",
+        hostname: "research-assets.cbinsights.com",
+      },
+    ],
   },
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
