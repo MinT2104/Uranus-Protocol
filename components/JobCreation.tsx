@@ -19,7 +19,7 @@ export const JobCreation = ({ setIsCreation }: { setIsCreation: any }) => {
     if (wallet) {
       const result = await wallet
         .callMethod({
-          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+          contractId: "dev-1693163400881-11970999828083",
           method: "create_job",
           args: {
             name_job: nameRef.current?.value,

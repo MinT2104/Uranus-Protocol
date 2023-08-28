@@ -24,7 +24,7 @@ export const JobApplication = ({
     if (wallet) {
       await wallet
         .callMethod({
-          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+          contractId: "dev-1693163400881-11970999828083",
           method: "take_job",
           args: formData,
           gas: "50000000000000",
