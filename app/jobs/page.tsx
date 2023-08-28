@@ -49,7 +49,7 @@ const page = () => {
     const getData = async () => {
       if (wallet) {
         const result = await wallet.viewMethod({
-          contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+          contractId: "dev-1693163400881-11970999828083",
           method: "get_all_jobs",
         });
         setData(result);
@@ -140,7 +140,7 @@ const page = () => {
           </button>
         </div> */}
         <div className=" relative top-[200px] text-black">
-          <span className="text-center font-bold text-pink-600 block text-[40px]">
+          <span className="text-center font-bold primaryText block text-[60px]">
             Uranus Jobs
           </span>
           <span className="text-center font-light block text-slate-400 w-1/3 mx-auto">
@@ -169,7 +169,7 @@ const page = () => {
             <div>
               <button
                 onClick={() => setIsCreation(true)}
-                className="px-6 py-3 bg-pink-500 text-white rounded-[12px]"
+                className="px-6 py-3 primaryBg text-white rounded-[12px]"
               >
                 New
               </button>

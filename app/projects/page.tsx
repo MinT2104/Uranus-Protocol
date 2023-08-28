@@ -33,7 +33,7 @@ const page = () => {
               <button
                 onClick={() => setIsCategoryCreation(true)}
                 type="button"
-                className="py-1 px-4 gap-2 bg-[#FB118E] text-white rounded-[12px] flex justify-center items-center"
+                className="py-1 px-4 gap-2 primaryBg text-white rounded-[12px] flex justify-center items-center"
               >
                 <AddIcon />
                 <span>New Category</span>
@@ -47,7 +47,7 @@ const page = () => {
               <button
                 onClick={() => setIsPosition(true)}
                 type="button"
-                className="py-1 px-4 gap-2 bg-[#FB118E] text-white rounded-[12px] flex justify-center items-center"
+                className="py-1 px-4 gap-2 primaryBg text-white rounded-[12px] flex justify-center items-center"
               >
                 <AddIcon />
                 <span>New Project</span>
@@ -132,9 +132,11 @@ const page = () => {
                         onClick={() =>
                           localStorage.setItem("projectData", index)
                         }
-                        className="px-4 py-2 bg-pink-500 text-white rounded"
+                        className="px-4 py-2 primaryBg text-white rounded"
                       >
-                        Read more
+                        <Link href={`/projects/detail/${data.id}`}>
+                          Read more
+                        </Link>
                       </button>
                     </td>
                     <td className="text-left px-6 py-3 truncate">
@@ -331,7 +333,7 @@ const page = () => {
             >
               Cancel
             </button>
-            <button className="bg-pink-600 rounded text-white font-bold px-6 p-2">
+            <button className="primaryBg rounded text-white font-bold px-6 p-2">
               Submit
             </button>
           </div>

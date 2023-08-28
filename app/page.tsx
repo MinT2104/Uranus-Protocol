@@ -16,13 +16,11 @@ export default function Home() {
   return (
     <section className="w-full h-fit bg-primary">
       <div className="h-screen w-[500px] mx-auto flex flex-col items-center justify-center gap-4">
-        <h1 className="font-black text-[40px] text-pink-600 ">
-          Uranus Protocol
-        </h1>
+        <h1 className="font-black text-[40px] primaryText ">Uranus Protocol</h1>
         <h3 className="font-light text-sm text-noSelected">
           The platform offers reliable contracts
         </h3>
-        <button className="font-bold text-lg text-white px-6 py-3 bg-pink-400 rounded-full">
+        <button className="font-bold text-lg text-white px-16 py-2 primaryBgHomeBtn rounded-full">
           <Link href="/jobs">Get started</Link>
         </button>
       </div>

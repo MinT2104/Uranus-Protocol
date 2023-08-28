@@ -17,3 +17,31 @@
 .strongShadow {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+.primaryBg {
+  background: rgb(43, 69, 152);
+  background: linear-gradient(
+    180deg,
+    rgba(43, 69, 152, 1) 0%,
+    rgba(71, 110, 193, 1) 100%
+  );
+}
+.primaryBgHomeBtn {
+  background: rgb(52, 43, 152);
+  background: linear-gradient(
+    180deg,
+    rgba(52, 43, 152, 1) 0%,
+    rgba(71, 153, 193, 1) 100%
+  );
+  /* background-color: "#342b98"; */
+}
+
+.primaryText {
+  background: rgb(52, 43, 152);
+  background: linear-gradient(
+    180deg,
+    rgba(52, 43, 152, 1) 0%,
+    rgba(71, 153, 193, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

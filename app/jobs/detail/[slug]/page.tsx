@@ -24,7 +24,7 @@ const JobDetail = () => {
       if (wallet) {
         await wallet
           .callMethod({
-            contractId: process.env.NEXT_PUBLIC_CONTRACT_NAME || "",
+            contractId: "dev-1693163400881-11970999828083",
             method: "complete_job",
             args: {
               job_id: currentJob?.job_id,
