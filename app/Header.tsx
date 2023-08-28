@@ -190,7 +190,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="w-1/3 px-[15px] py-[17px] h-full flex justify-center items-center">
+      {/* <div className="w-1/3 px-[15px] py-[17px] h-full flex justify-center items-center">
         <div className="rounded-[12px] w-full h-fit flex items-center bg-white px-2 border-[1px] border-[#D6DDE3]">
           <SearchRoundedIcon sx={{ fontSize: 20 }} className="text-slate-400" />
           <input
@@ -198,7 +198,7 @@ const Header = () => {
             placeholder="Search tokens and NFT collections"
           />
         </div>
-      </div>
+      </div> */}
       <div className="w-1/3 flex justify-end h-fit px-[15px] py-[17px]">
         <ul className="flex gap-[10px] items-center">
           {/* <li
