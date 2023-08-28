@@ -1,6 +1,5 @@
-<h1 align="center">
-Uranus Protocol
-</h1>
+## Uranus Protocol
+
 In this project, I have worked on a reliable contract website where users communicate through web services that we created. 
 ## How to see a demo of this project: 
 1 - you install the package
