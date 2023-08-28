@@ -65,7 +65,7 @@ const JobDetail = () => {
         //     </button>
         //     <button
         //       onClick={() => handleCompleteJob(false)}
-        //       className="py-4 w-40 bg-red-500 text-white  mx-auto rounded"
+        //       className="py-4 w-40 primaryBgHomeBtn text-white  mx-auto rounded"
         //     >
         //       false
         //     </button>
@@ -175,7 +175,7 @@ const JobDetail = () => {
             </span>
             <button
               onClick={() => setIsTrueFalse(true)}
-              className="relative px-4 p-2 rounded bg-pink-600 text-white"
+              className="relative px-4 p-2 rounded primaryBg text-white"
             >
               Complete Job
             </button>
@@ -183,7 +183,7 @@ const JobDetail = () => {
           <span className="text-noSelected">{currentJob?.status}</span>
           <button
             onClick={() => setIsApplication(true)}
-            className="w-1/3 p-3 px-6 rounded bg-pink-500 text-white my-4"
+            className="w-1/3 p-3 px-6 rounded primaryBg text-white my-4"
           >
             Apply now
           </button>
@@ -193,7 +193,7 @@ const JobDetail = () => {
           <div className="w-full py-4 flex gap-4 items-center">
             <Person3Icon
               sx={{ fontSize: 40 }}
-              className="text-pink-600 bg-pink-200 p-2 rounded-full"
+              className="bg-blue-300 bg-pink-200 p-2 rounded-full"
             />
             <span className="font-bold text-[20px]">
               {currentJob?.job_creators}
@@ -202,7 +202,7 @@ const JobDetail = () => {
           <div className="w-full py-4 flex gap-4 items-center">
             <Person3Icon
               sx={{ fontSize: 40 }}
-              className="text-pink-600 bg-pink-200 p-2 rounded-full"
+              className="bg-blue-300 bg-pink-200 p-2 rounded-full"
             />
             <span className="font-bold text-[20px]">
               {currentJob?.dev_account}
@@ -214,7 +214,7 @@ const JobDetail = () => {
           <div className="w-full py-4 flex gap-4 items-center">
             <PaidRoundedIcon
               sx={{ fontSize: 40 }}
-              className="text-pink-600 bg-pink-200 p-2 rounded-full"
+              className="bg-blue-300 p-2 rounded-full"
             />
             <span className="font-bold text-[20px]">
               {currentJob?.token_amount}
@@ -226,7 +226,7 @@ const JobDetail = () => {
           <h1 className="font-bold text-[20px]">Description</h1>
           <p className=" px-4 text-slate-500">{currentJob?.description}</p>
         </div>
-        <button className="p-3 mt-10 text-white rounded bg-pink-500 w-full">
+        <button className="p-3 mt-10 text-white rounded primaryBg w-full">
           Apply now
         </button>
       </div>

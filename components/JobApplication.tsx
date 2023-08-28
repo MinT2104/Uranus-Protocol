@@ -114,7 +114,7 @@ export const JobApplication = ({
           </button>
           <button
             type="submit"
-            className="bg-pink-600 rounded text-white font-bold px-6 p-2"
+            className="primaryBg rounded text-white font-bold px-6 p-2"
           >
             Submit
           </button>

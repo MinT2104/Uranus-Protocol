@@ -40,7 +40,7 @@ export const CategoryCreation = ({
           </button>
           <button
             onClick={handleSubmitCategory}
-            className="bg-pink-600 rounded text-white font-bold px-6 p-2"
+            className="primaryBg rounded text-white font-bold px-6 p-2"
           >
             Submit
           </button>

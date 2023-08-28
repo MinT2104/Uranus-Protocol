@@ -13,7 +13,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#fef3fa",
+        primary: "#e5f6ff",
         selected: "#0D111C",
         noSelected: "#5D6785",
         searchBar: "#EEF6FD",

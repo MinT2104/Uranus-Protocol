@@ -129,7 +129,7 @@ function ConnectWalletButton() {
     <button
       onClick={onConnectWalletClicked}
       type="button"
-      className="bg-[#FFD4EB] text-[#30A1EB] p-[10px] rounded-[20px] font-[600] outline-none"
+      className="primaryBg text-white p-[10px] rounded-[20px] font-[600] outline-none"
     >
       Connect
     </button>
