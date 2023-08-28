@@ -18,20 +18,28 @@ pnpm dev
 Open [https://uranusprotocol.vercel.app](https://uranusprotocol.vercel.app/) with your browser to see the result.
 
 This is the main page of the website after clicking above link : 
+
 ![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/0f6c9b03-5e4c-4c11-ad18-521ef4e0e22b)
 
+## Jobs page
 
-## Learn More
+Click "Get started" button to redirect to career page where we can create more jobs and apply to avaiable job.
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/0b7d47dd-f63c-4262-98b5-cf34fb3d8370)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Click "New" to create a job, you have to provide the Job's Name, description and money amount , submit when you finish like below: 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/ae294810-d5c7-483b-bb85-bba5c6b408f1)
 
-## Deploy on Vercel
+Click to the name of the job, it will redirect to detail page of the job , in this page you can apply the job: 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/80777769-a9b1-4739-999d-cc3566bb37ec)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+
+
+
+
