@@ -22,6 +22,7 @@ Click "Connect" to open the login page to near wallet:
 
 ![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/e0bbe683-ef71-4071-a9d3-eb9c3244d09c)
 
+---------------------------------------------------------------------------------------------------------
 
 ![image](https://github.com/MinT2104/Uranus-Protocol/assets/96491337/0f6c9b03-5e4c-4c11-ad18-521ef4e0e22b)
 
